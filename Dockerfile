@@ -8,6 +8,13 @@ MAINTAINER Angel Rodriguez  "angelrr7702@gmail.com"
 RUN echo "deb http://archive.ubuntu.com/ubuntu saucy-backports main restricted "                                                                                                  >> /etc/apt/sources.list
 ENV DEBIAN_FRONTEND noninteractive
 
+ENV C US
+ENV ST California
+ENV L Sacramento
+ENV O example
+ENV OU IT Deparment
+ENV CN example.com
+
 RUN (apt-get update && apt-get upgrade -y -q && apt-get dist-upgrade -y -q && ap                                                                                                 t-get -y -q autoclean && apt-get -y -q autoremove)
 RUN apt-get install -y -q supervisor php5 libapache2-mod-php5 php5-gd apache2 my                                                                                                 sql-server php-xml-parser php5-intl smbclient php5-sqlite php5-mysql php5-json c                                                                                                 ron php5-curl curl libcurl3 openssl
 
