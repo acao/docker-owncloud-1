@@ -21,5 +21,5 @@ The -e is to give info for the SSL generation of .key and .pem file ... please c
 
 check port and point your brownser to location ...and log in with: admin admin , remember to use mysql database with database name: owncloud and password: ownclouddbpasswd plus server will be: localhost ...
 
-for ssh access login : root password: rootprovisonal ==> replace password when using it
+for ssh access login : root password: rootprovisonal ==> replace password when using it with passwd command
 
