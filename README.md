@@ -16,7 +16,8 @@ docker run -d -p 22 -p 443 -e C = US
 angelrr7702/docker-owncloud6
 
 
-The -e is to give info for the SSL generation of .key and .pem file ...
+
+The -e is to give info for the SSL generation of .key and .pem file ... please change the values for your specific location and info ... 
 
 check port and point your brownser to location ...and log in with: admin admin , remember to use mysql database with database name: owncloud and password: ownclouddbpasswd plus server will be: localhost ...
 
