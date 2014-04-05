@@ -19,7 +19,7 @@ angelrr7702/docker-owncloud6
 
 The -e is to give info for the SSL generation of .key and .pem file ... please change the values for your specific location and info ... 
 
-check port and point your brownser to location ...and log in with: admin admin , remember to use mysql database with database name: owncloud and password: ownclouddbpasswd plus server will be: localhost ...
+check port and point your brownser to location ...and log in with: admin admin , remember to use mysql database with database name: owncloud and password: ownclouddbpasswd plus server will be: localhost ... and user will be : ownclouduser
 
 for ssh access login : root password: rootprovisonal ==> replace password when using it with passwd command
 
