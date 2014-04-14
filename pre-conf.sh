@@ -11,9 +11,9 @@
 
  echo 'deb http://download.opensuse.org/repositories/isv:/ownCloud:/community/xUbuntu_13.10/ /' >> /etc/apt/sources.list.d/owncloud.list
  wget http://download.opensuse.org/repositories/isv:ownCloud:community/xUbuntu_13.10/Release.key
- apt-key add - < Release.key
- apt-get update -y -q
- apt-get install -y -q owncloud
+ DEBIAN_FRONTEND=noninteractive apt-key add - < Release.key
+ DEBIAN_FRONTEND=noninteractive apt-get update -y -q
+ DEBIAN_FRONTEND=noninteractive apt-get install -y -q owncloud
 
 killall mysqld
 sleep 10s
