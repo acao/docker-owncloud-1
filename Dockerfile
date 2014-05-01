@@ -24,5 +24,7 @@ RUN (/bin/bash -c /pre-conf.sh)
 RUN ( a2enmod ssl && a2enmod rewrite)
 RUN mkdir -p /var/log/supervisor
 ADD supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+
 EXPOSE 22 443
+VOLUME ["/var/www/owncloud/data", "/var/log/supervisor"]
 CMD ["/bin/bash", "-e", "/start.sh"]
