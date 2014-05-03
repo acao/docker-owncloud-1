@@ -14,7 +14,6 @@
  DEBIAN_FRONTEND=noninteractive apt-key add - < Release.key
  DEBIAN_FRONTEND=noninteractive apt-get update -y -q
  DEBIAN_FRONTEND=noninteractive apt-get install -y -q owncloud
- chown -R www-data:www-data /var/www/owncloud/data 
  
 killall mysqld
 sleep 10s
