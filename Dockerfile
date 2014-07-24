@@ -26,5 +26,5 @@ RUN mkdir -p /var/log/supervisor
 ADD supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 EXPOSE 22 443
-VOLUME ["/var/www/owncloud/data", "/var/log/supervisor"]
+VOLUME ["/var/www/owncloud/data"]
 CMD ["/bin/bash", "-e", "/start.sh"]
