@@ -7,12 +7,12 @@ It will be update to the last version of the official release
 
 To run the container ...
 
-docker run -d -p 22 -p 443 -e C = US
--e ST = California
--e L = Sacramento
--e O = example
--e OU = IT Deparment
--e CN = example.com
+docker run -d -p 22 -p 443 -e C=US
+-e ST=California
+-e L=Sacramento
+-e O=example
+-e OU=IT_Deparment
+-e CN=example.com
 angelrr7702/docker-owncloud6
 
 
