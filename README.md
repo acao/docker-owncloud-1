@@ -1,8 +1,8 @@
-docker-owncloud6
+docker-owncloud
 ================
 
-Owncloud 6 running on docker(lxc) container ..
-
+Owncloud 7 running on docker(lxc) container ..
+It will be update to the last version of the official release 
 
 
 To run the container ...
