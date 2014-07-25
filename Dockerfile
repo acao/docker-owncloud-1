@@ -1,4 +1,4 @@
-# owncloud6 container
+# owncloud7 container
 # VERSION               0.1.1
 FROM angelrr7702/docker-ubuntu-14.04-sshd
 MAINTAINER Angel Rodriguez  "angelrr7702@gmail.com"
