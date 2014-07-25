@@ -1,4 +1,4 @@
-# owncloud7 container
+# owncloud7 container - it will be update to the last stable version
 # VERSION               0.1.1
 FROM angelrr7702/docker-ubuntu-14.04-sshd
 MAINTAINER Angel Rodriguez  "angelrr7702@gmail.com"
