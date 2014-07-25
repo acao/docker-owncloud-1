@@ -19,6 +19,7 @@ ADD owncloud.conf /etc/apache2/conf.d/owncloud.conf
 ADD 000-default.conf /etc/apache2/sites-available/000-default.conf
 ADD default-ssl.conf /etc/apache2/sites-available/default-ssl.conf
 RUN mkdir -p /etc/apache2/ssl
+RUN rm -R /var/www/html
 RUN (chmod 750 /start.sh && chmod 750 /etc/apache2/foreground.sh && chmod 750 /pre-conf.sh)
 RUN (/bin/bash -c /pre-conf.sh)
 RUN ( a2enmod ssl && a2enmod rewrite)
@@ -26,5 +27,4 @@ RUN mkdir -p /var/log/supervisor
 ADD supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 EXPOSE 22 443
-VOLUME ["/var/www/owncloud/data"]
 CMD ["/bin/bash", "-e", "/start.sh"]
