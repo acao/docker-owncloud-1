@@ -9,6 +9,7 @@ ENV L Sacramento
 ENV O example
 ENV OU IT Deparment
 ENV CN example.com
+RUN ln -s -f /bin/true /usr/bin/chfn
 RUN (DEBIAN_FRONTEND=noninteractive apt-get update &&  DEBIAN_FRONTEND=noninteractive apt-get upgrade -y -q && DEBIAN_FRONTEND=noninteractive apt-get dist-upgrade -y -q )
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -y -q supervisor php5 libapache2-mod-php5 php5-gd apache2 mysql-server php-xml-parser php5-intl smbclient php5-sqlite php5-mysql php5-json cron php5-curl curl libcurl3 openssl
 ADD start.sh /start.sh
