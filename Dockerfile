@@ -1,31 +1,61 @@
-# owncloud7 container - it will be update to the last stable version
-# VERSION               0.1.1
-FROM angelrr7702/docker-ubuntu-14.04-sshd
+#name of container: docker-owncloud
+#versison of container: 0.1.5
+
+FROM angelrr7702/docker-baseimage
 MAINTAINER Angel Rodriguez  "angelrr7702@gmail.com"
-RUN echo "deb http://archive.ubuntu.com/ubuntu trusty-backports main restricted " >> /etc/apt/sources.list
+
+# Set correct environment variables.
+ENV HOME /root
+
+#General variable definition for generation ssl scription keys
 ENV C US
 ENV ST California
 ENV L Sacramento
 ENV O example
 ENV OU IT Deparment
 ENV CN example.com
-RUN ln -s -f /bin/true /usr/bin/chfn
+
+#add repository and update the container
+RUN echo "deb http://archive.ubuntu.com/ubuntu trusty-backports main restricted " >> /etc/apt/sources.list
 RUN (DEBIAN_FRONTEND=noninteractive apt-get update &&  DEBIAN_FRONTEND=noninteractive apt-get upgrade -y -q && DEBIAN_FRONTEND=noninteractive apt-get dist-upgrade -y -q )
-RUN DEBIAN_FRONTEND=noninteractive apt-get install -y -q supervisor php5 libapache2-mod-php5 php5-gd apache2 mysql-server php-xml-parser php5-intl smbclient php5-sqlite php5-mysql php5-json cron php5-curl curl libcurl3 openssl
-ADD start.sh /start.sh
-ADD foreground.sh /etc/apache2/foreground.sh
+#Installation of nesesary package/software for this containers...
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -y -q  php5 libapache2-mod-php5 php5-gd apache2 mysql-server php-xml-parser php5-intl smbclient php5-sqlite php5-mysql php5-json php5-curl curl libcurl3 openssl
+
+# to add mysqld deamon to runit
+RUN mkdir /etc/service/mysqld
+ADD mysqld.sh /etc/service/mysqld/run
+RUN chmod +x /etc/service/mysqld/run
+
+# to add apache2 deamon to runit
+RUN mkdir /etc/service/apache2
+ADD apache2.sh /etc/service/apache2/run
+RUN chmod +x /etc/service/apache2/run
+
+#to add startup.sh to be runs the scripts during startup
+RUN mkdir -p /etc/my_init.d
+ADD startup.sh /etc/my_init.d/startup.sh
+RUN chmod +x /etc/my_init.d/startup.sh
+
+#installing owncloud and creating database for it ....
 ADD pre-conf.sh /pre-conf.sh
+RUN chmod +x /pre-conf.sh
+RUN /bin/bash -c /pre-conf.sh
+
+# configuration file for owncloud and apache2
 ADD apache2.conf /etc/apache2/apache2.conf
 ADD owncloud.conf /etc/apache2/conf.d/owncloud.conf
 ADD 000-default.conf /etc/apache2/sites-available/000-default.conf
 ADD default-ssl.conf /etc/apache2/sites-available/default-ssl.conf
 RUN mkdir -p /etc/apache2/ssl
 RUN rm -R /var/www/html
-RUN (chmod 750 /start.sh && chmod 750 /etc/apache2/foreground.sh && chmod 750 /pre-conf.sh)
-RUN (/bin/bash -c /pre-conf.sh)
 RUN ( a2enmod ssl && a2enmod rewrite)
-RUN mkdir -p /var/log/supervisor
-ADD supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
-EXPOSE 22 443
-CMD ["/bin/bash", "-e", "/start.sh"]
+#expose port for https service
+EXPOSE 443
+
+# Use baseimage-docker's init system.
+CMD ["/sbin/my_init"]
+
+
+# Clean up APT when done.
+RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
