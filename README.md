@@ -22,4 +22,4 @@ The -e is to give info for the SSL generation of .key and .pem file ... please c
 check port and point your brownser to location ...and log in with: admin admin , remember to use mysql database with database name: owncloud and password: ownclouddbpasswd plus server will be: localhost ... and user will be : ownclouduser
 
 
-
+Use docker-bash ID_container to access the container from the server that the container is running ... docker-bash part of docker-tools ..
