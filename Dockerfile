@@ -58,6 +58,12 @@ RUN mkdir -p /etc/apache2/ssl
 RUN rm -R /var/www/html
 RUN ( a2enmod ssl && a2enmod rewrite)
 
+##scritp that can be running from the outside using docker-bash tool ...
+#backup scritp with need to be use with VOLUME /var/backups/
+ADD backup.sh /sbin/backup
+RUN chmod +x /sbin/backup
+VOLUME /var/backups
+
 #expose port for https service
 EXPOSE 443
 
