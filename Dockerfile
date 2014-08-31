@@ -36,6 +36,10 @@ RUN mkdir -p /etc/my_init.d
 ADD startup.sh /etc/my_init.d/startup.sh
 RUN chmod +x /etc/my_init.d/startup.sh
 
+
+RUN /usr/bin/workaround-docker-2267
+
+
 #installing owncloud and creating database for it ....
 ADD pre-conf.sh /pre-conf.sh
 RUN chmod +x /pre-conf.sh
