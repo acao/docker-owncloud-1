@@ -13,7 +13,7 @@
  wget http://download.opensuse.org/repositories/isv:ownCloud:community/xUbuntu_14.04/Release.key
  DEBIAN_FRONTEND=noninteractive apt-key add - < Release.key
  DEBIAN_FRONTEND=noninteractive apt-get update -y -q
- DEBIAN_FRONTEND=noninteractive apt-get install -y -q owncloud
+ DEBIAN_FRONTEND=noninteractive apt-get install -y -q owncloud imagemagick php5-imagick libav-tools 
  DEBIAN_FRONTEND=noninteractive apt-get install -y -q --no-install-recommends libreoffice-writer
 
  
