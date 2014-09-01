@@ -14,6 +14,8 @@
  DEBIAN_FRONTEND=noninteractive apt-key add - < Release.key
  DEBIAN_FRONTEND=noninteractive apt-get update -y -q
  DEBIAN_FRONTEND=noninteractive apt-get install -y -q owncloud
+ DEBIAN_FRONTEND=noninteractive apt-get install -y -q --no-install-recommends libreoffice-writer
+
  
 killall mysqld
 sleep 10s
