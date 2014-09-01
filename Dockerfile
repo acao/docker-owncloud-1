@@ -56,7 +56,7 @@ ADD 000-default.conf /etc/apache2/sites-available/000-default.conf
 ADD default-ssl.conf /etc/apache2/sites-available/default-ssl.conf
 RUN mkdir -p /etc/apache2/ssl
 RUN rm -R /var/www/html
-RUN ( a2enmod ssl && a2enmod rewrite)
+RUN ( a2enmod ssl && a2enmod rewrite && a2enmod headers)
 
 ##scritp that can be running from the outside using docker-bash tool ...
 #backup scritp with need to be use with VOLUME /var/backups/
@@ -69,6 +69,10 @@ EXPOSE 443
 
 # Use baseimage-docker's init system.
 CMD ["/sbin/my_init"]
+
+#create Volume for the data for owncloud
+VOLUME /var/www/owncloud/data
+RUN chown -R www-data:www-data /var/www/owncloud
 
 
 # Clean up APT when done.
