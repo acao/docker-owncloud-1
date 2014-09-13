@@ -11,7 +11,8 @@ else
         sed -i 's/ServerName example.com/ServerName $CN/' /etc/apache2/conf.d/owncloud.conf
         #to include the domain to the hosts
         echo 127.0.0.1 $CN >> /etc/workaround-docker-2267/hosts
-
+        #needed to fix problem with ubuntu ... and cron 
+        update-locale
         date > /configured
 fi
 
