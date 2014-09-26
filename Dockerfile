@@ -29,7 +29,6 @@ RUN apt-get update && apt-get install -y -q  php5 \
                                              php5-mysql \
                                              php5-json  \
                                              php5-curl  \
-                                             curl \
                                              libcurl3 \
                                              openssl  \
                       && rm -rf /var/lib/apt/lists/*
