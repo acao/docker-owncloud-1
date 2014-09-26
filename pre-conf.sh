@@ -15,7 +15,7 @@
  DEBIAN_FRONTEND=noninteractive apt-get update -y -q
  DEBIAN_FRONTEND=noninteractive apt-get install -y -q owncloud imagemagick php5-imagick libav-tools 
  DEBIAN_FRONTEND=noninteractive apt-get install -y -q --no-install-recommends libreoffice-writer
-
+ rm -rf /var/lib/apt/lists/*
  
 killall mysqld
 sleep 10s
