@@ -49,14 +49,6 @@ RUN mkdir -p /etc/my_init.d
 COPY startup.sh /etc/my_init.d/startup.sh
 RUN chmod +x /etc/my_init.d/startup.sh
 
-##internal fix that maybe
-#refers to dockerfile_reference
-#workaround for problem to modified /etc/hosts 
-#replacing by /etc/workaround-docker-2267/hosts
-#need to be execute commad each time upgrade modified libnss_files.so.2  (need to find a way to do this automatic)
-RUN /usr/bin/workaround-docker-2267
-
-
 #installing owncloud and creating database for it ....
 COPY pre-conf.sh /pre-conf.sh
 RUN chmod +x /pre-conf.sh \
