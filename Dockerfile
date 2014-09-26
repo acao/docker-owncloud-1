@@ -1,5 +1,5 @@
 #name of container: docker-owncloud
-#versison of container: 0.1.5
+#versison of container: 0.2.0
 
 FROM angelrr7702/docker-baseimage
 MAINTAINER Angel Rodriguez  "angelrr7702@gmail.com"
@@ -16,24 +16,37 @@ ENV OU IT Deparment
 ENV CN example.com
 
 #add repository and update the container
-RUN echo "deb http://archive.ubuntu.com/ubuntu trusty-backports main restricted " >> /etc/apt/sources.list
-RUN (DEBIAN_FRONTEND=noninteractive apt-get update &&  DEBIAN_FRONTEND=noninteractive apt-get upgrade -y -q && DEBIAN_FRONTEND=noninteractive apt-get dist-upgrade -y -q )
 #Installation of nesesary package/software for this containers...
-RUN DEBIAN_FRONTEND=noninteractive apt-get install -y -q  php5 libapache2-mod-php5 php5-gd apache2 mysql-server php-xml-parser php5-intl smbclient php5-sqlite php5-mysql php5-json php5-curl curl libcurl3 openssl
+RUN echo "deb http://archive.ubuntu.com/ubuntu trusty-backports main restricted " >> /etc/apt/sources.list
+RUN apt-get update && apt-get install -y -q  php5 \
+                                             libapache2-mod-php5 \
+                                             php5-gd apache2 \
+                                             mysql-server \
+                                             php-xml-parser \
+                                             php5-intl \
+                                             smbclient \
+                                             php5-sqlite \
+                                             php5-mysql \
+                                             php5-json  \
+                                             php5-curl  \
+                                             curl \
+                                             libcurl3 \
+                                             openssl  \
+                      && rm -rf /var/lib/apt/lists/*
 
 # to add mysqld deamon to runit
 RUN mkdir /etc/service/mysqld
-ADD mysqld.sh /etc/service/mysqld/run
+COPY mysqld.sh /etc/service/mysqld/run
 RUN chmod +x /etc/service/mysqld/run
 
 # to add apache2 deamon to runit
 RUN mkdir /etc/service/apache2
-ADD apache2.sh /etc/service/apache2/run
+COPY apache2.sh /etc/service/apache2/run
 RUN chmod +x /etc/service/apache2/run
 
 #to add startup.sh to be runs the scripts during startup
 RUN mkdir -p /etc/my_init.d
-ADD startup.sh /etc/my_init.d/startup.sh
+COPY startup.sh /etc/my_init.d/startup.sh
 RUN chmod +x /etc/my_init.d/startup.sh
 
 ##internal fix that maybe
@@ -45,22 +58,24 @@ RUN /usr/bin/workaround-docker-2267
 
 
 #installing owncloud and creating database for it ....
-ADD pre-conf.sh /pre-conf.sh
-RUN chmod +x /pre-conf.sh
-RUN /bin/bash -c /pre-conf.sh
+COPY pre-conf.sh /pre-conf.sh
+RUN chmod +x /pre-conf.sh \
+    && /bin/bash -c /pre-conf.sh
 
 # configuration file for owncloud and apache2
-ADD apache2.conf /etc/apache2/apache2.conf
-ADD owncloud.conf /etc/apache2/conf.d/owncloud.conf
-ADD 000-default.conf /etc/apache2/sites-available/000-default.conf
-ADD default-ssl.conf /etc/apache2/sites-available/default-ssl.conf
-RUN mkdir -p /etc/apache2/ssl
-RUN rm -R /var/www/html
-RUN ( a2enmod ssl && a2enmod rewrite && a2enmod headers)
+COPY apache2.conf /etc/apache2/apache2.conf
+COPY owncloud.conf /etc/apache2/conf.d/owncloud.conf
+COPY 000-default.conf /etc/apache2/sites-available/000-default.conf
+COPY default-ssl.conf /etc/apache2/sites-available/default-ssl.conf
+RUN mkdir -p /etc/apache2/ssl \
+    && rm -R /var/www/html  \
+    && a2enmod ssl \
+    && a2enmod rewrite \
+    && a2enmod headers
 
 ##scritp that can be running from the outside using docker-bash tool ...
 #backup scritp with need to be use with VOLUME /var/backups/
-ADD backup.sh /sbin/backup
+COPY backup.sh /sbin/backup
 RUN chmod +x /sbin/backup
 VOLUME /var/backups
 
