@@ -33,8 +33,7 @@ RUN apt-get update && apt-get install -y -q  php5 \
                                              openssl  \
                       && apt-get clean \
                       && rm -rf /tmp/* /var/tmp/*  \
-                      && rm -rf /var/lib/apt/lists/* \
-                      && rm -f /etc/dpkg/dpkg.cfg.d/02apt-speedup
+                      && rm -rf /var/lib/apt/lists/*
 
 # to add mysqld deamon to runit
 RUN mkdir /etc/service/mysqld
