@@ -31,7 +31,10 @@ RUN apt-get update && apt-get install -y -q  php5 \
                                              php5-curl  \
                                              libcurl3 \
                                              openssl  \
-                      && rm -rf /var/lib/apt/lists/*
+                      && apt-get clean \
+                      && rm -rf /tmp/* /var/tmp/*  \
+                      && rm -rf /var/lib/apt/lists/* \
+                      && rm -f /etc/dpkg/dpkg.cfg.d/02apt-speedup
 
 # to add mysqld deamon to runit
 RUN mkdir /etc/service/mysqld
