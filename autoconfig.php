@@ -12,4 +12,4 @@ $AUTOCONFIG = array (
   "knowledgebaseenabled" => true,
   "appstoreenabled" => true,
   "appstoreurl" => "https://api.owncloud.com/v1",
-)
+);
