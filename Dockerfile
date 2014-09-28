@@ -78,7 +78,7 @@ EXPOSE 443
 CMD ["/sbin/my_init"]
 
 #create Volume for the data for owncloud
-VOLUME /var/www/owncloud/data
+VOLUME /var/data
 
 
 # Clean up APT when done.
