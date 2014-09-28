@@ -1,4 +1,4 @@
 <?php
 $CONFIG = array (
-  'datadirectory' => '/var/data',
+  'datadirectory' => '/var/data/',
 );
