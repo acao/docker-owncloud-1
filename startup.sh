@@ -3,7 +3,7 @@
 
 set -e
 
-if [ -f /configured ]; then
+if [ -f /etc/configured ]; then
         echo 'already configured'
 else
         openssl req -new -x509 -days 365 -nodes -subj "/C=$C/ST=$ST/L=$L/O=$O/OU=$OU/CN=$CN"  -out /etc/apache2/ssl/owncloud.pem -keyout /etc/apache2/ssl/owncloud.key
@@ -19,7 +19,7 @@ else
         find /var/data -type f -exec chmod 640 {} \;
         #needed to fix problem with ubuntu ... and cron 
         update-locale
-        date > /configured
+        date > /etc/configured
 fi
 
 
