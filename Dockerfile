@@ -62,7 +62,6 @@ COPY config.php /var/www/owncloud/config/config.php
 RUN mkdir -p /etc/apache2/ssl \
     && rm -R /var/www/html  \
     && a2enmod ssl \
-    && a2enmod default-ssl \
     && a2enmod rewrite \
     && a2enmod headers
 
