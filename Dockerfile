@@ -1,5 +1,5 @@
 #name of container: docker-owncloud
-#versison of container: 0.2.0
+#versison of container: 1.0.0
 
 FROM angelrr7702/docker-baseimage
 MAINTAINER Angel Rodriguez  "angelrr7702@gmail.com"
