@@ -1,7 +1,7 @@
 #name of container: docker-owncloud
 #versison of container: 1.0.0
 
-FROM angelrr7702/docker-baseimage
+FROM quantumobject/docker-baseimage
 MAINTAINER Angel Rodriguez  "angelrr7702@gmail.com"
 
 # Set correct environment variables.
