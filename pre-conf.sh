@@ -15,7 +15,12 @@
  DEBIAN_FRONTEND=noninteractive apt-get update -y -q
  DEBIAN_FRONTEND=noninteractive apt-get install -y -q owncloud imagemagick php5-imagick libav-tools 
  DEBIAN_FRONTEND=noninteractive apt-get install -y -q --no-install-recommends libreoffice-writer
+ 
+ #to clear some data before saving this layer ...a docker image
+ apt-get clean
+ rm -rf /tmp/* /var/tmp/*
  rm -rf /var/lib/apt/lists/*
+ rm -f /etc/dpkg/dpkg.cfg.d/02apt-speedup
  
 killall mysqld
 sleep 10s
