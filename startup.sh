@@ -11,6 +11,7 @@ else
         #to include the domain to the hosts
         echo 127.0.0.1 $CN >> /etc/hosts
         # for security change permission of folder and files
+        chown -R www-data:www-data /var/www/owncloud
         find /var/www/owncloud -type d -exec chmod 750 {}
         find /var/www/owncloud -type f -exec chmod 640 {}
         #needed to fix problem with ubuntu ... and cron 
