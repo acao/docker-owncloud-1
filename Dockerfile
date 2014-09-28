@@ -71,15 +71,11 @@ COPY backup.sh /sbin/backup
 RUN chmod +x /sbin/backup
 VOLUME /var/backups
 
+#create Volume for the data for owncloud
+VOLUME /var/data
+
 #expose port for https service
 EXPOSE 443
 
 # Use baseimage-docker's init system.
 CMD ["/sbin/my_init"]
-
-#create Volume for the data for owncloud
-VOLUME /var/data
-
-
-# Clean up APT when done.
-RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
