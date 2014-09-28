@@ -14,6 +14,9 @@ else
         chown -R www-data:www-data /var/www/owncloud
         find /var/www/owncloud -type d -exec chmod 750 {} \;
         find /var/www/owncloud -type f -exec chmod 640 {} \;
+        chown -R www-data:www-data /var/data
+        find /var/data -type d -exec chmod 750 {} \;
+        find /var/data -type f -exec chmod 640 {} \;
         #needed to fix problem with ubuntu ... and cron 
         update-locale
         date > /configured
