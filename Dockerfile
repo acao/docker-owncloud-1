@@ -58,6 +58,7 @@ COPY apache2.conf /etc/apache2/apache2.conf
 COPY owncloud.conf /etc/apache2/conf.d/owncloud.conf
 COPY 000-default.conf /etc/apache2/sites-available/000-default.conf
 COPY default-ssl.conf /etc/apache2/sites-available/default-ssl.conf
+COPY config.php /var/www/owncloud/config/config.php
 RUN mkdir -p /etc/apache2/ssl \
     && rm -R /var/www/html  \
     && a2enmod ssl \
