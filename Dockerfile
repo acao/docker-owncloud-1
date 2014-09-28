@@ -61,6 +61,7 @@ COPY default-ssl.conf /etc/apache2/sites-available/default-ssl.conf
 RUN mkdir -p /etc/apache2/ssl \
     && rm -R /var/www/html  \
     && a2enmod ssl \
+    && a2enmod default-ssl \
     && a2enmod rewrite \
     && a2enmod headers
 
@@ -78,7 +79,6 @@ CMD ["/sbin/my_init"]
 
 #create Volume for the data for owncloud
 VOLUME /var/www/owncloud/data
-RUN chown -R www-data:www-data /var/www/owncloud
 
 
 # Clean up APT when done.
