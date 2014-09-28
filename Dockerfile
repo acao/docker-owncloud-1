@@ -49,9 +49,9 @@ COPY startup.sh /etc/my_init.d/startup.sh
 RUN chmod +x /etc/my_init.d/startup.sh
 
 #installing owncloud and creating database for it ....
-COPY pre-conf.sh /pre-conf.sh
-RUN chmod +x /pre-conf.sh \
-    && /bin/bash -c /pre-conf.sh
+COPY pre-conf.sh /sbin/pre-conf.sh
+RUN chmod +x /sbin/pre-conf.sh \
+    && /bin/bash -c /sbin/pre-conf.sh
 
 # configuration file for owncloud and apache2
 COPY apache2.conf /etc/apache2/apache2.conf
