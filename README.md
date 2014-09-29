@@ -13,7 +13,7 @@ docker run -d -p 443 -e C=US
 -e O=example
 -e OU=IT_Deparment
 -e CN=example.com
-angelrr7702/docker-owncloud
+quantumobject/docker-owncloud
 
 
 
