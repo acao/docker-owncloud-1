@@ -19,8 +19,14 @@ quantumobject/docker-owncloud
 
 The -e is to give info for the SSL generation of .key and .pem file ... please change the values for your specific location and info ... 
 
-check port and point your brownser to https://[ip]:443/ and log in with: admin  plus create your own password. 
+Check port and point your brownser to https://[ip]:443/ and log in with: admin  plus create your own password. 
 
-Use docker-bash ID_container to access the container from the server that the container is running ... docker-bash part of QuantumObject/docker-tools 
+To access the container from the server that the container is running :
 
+docker exec -it container_id /bin/bash
+
+
+for more info for owncloud check :
+
+http://doc.owncloud.org/
 
