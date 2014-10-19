@@ -2,7 +2,7 @@
 #versison of container: 1.0.0
 
 FROM quantumobject/docker-baseimage
-MAINTAINER Angel Rodriguez  "angelrr7702@gmail.com"
+MAINTAINER Angel Rodriguez  "angel@quantumobject.com"
 
 # Set correct environment variables.
 ENV HOME /root
