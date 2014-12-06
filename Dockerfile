@@ -1,18 +1,18 @@
 #name of container: docker-owncloud
 #versison of container: 1.0.0
 
-FROM quantumobject/docker-baseimage
-MAINTAINER Angel Rodriguez  "angel@quantumobject.com"
+FROM acao/docker-baseimage
+MAINTAINER Richard Schulte "richard.j.schulte@gmail.com"
 
 # Set correct environment variables.
 ENV HOME /root
 
 #General variable definition for generation ssl scription keys
 ENV C US
-ENV ST California
-ENV L Sacramento
+ENV ST Ohio
+ENV L Cleveland
 ENV O example
-ENV OU IT Deparment
+ENV OU IT Department
 ENV CN example.com
 
 #add repository and update the container
