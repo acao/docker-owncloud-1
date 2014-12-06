@@ -12,4 +12,6 @@ $AUTOCONFIG = array (
   "knowledgebaseenabled" => true,
   "appstoreenabled" => true,
   "appstoreurl" => "https://api.owncloud.com/v1",
+  'preview_libreoffice_path' => '/usr/bin/libreoffice',
+  'preview_max_scale_factor' => 7,
 );
