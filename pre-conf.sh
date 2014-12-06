@@ -14,7 +14,7 @@
  DEBIAN_FRONTEND=noninteractive apt-key add - < Release.key
  DEBIAN_FRONTEND=noninteractive apt-get update -y -q
  DEBIAN_FRONTEND=noninteractive apt-get install -y -q owncloud imagemagick php5-imagick libav-tools 
- DEBIAN_FRONTEND=noninteractive apt-get install -y -q --no-install-recommends libreoffice-writer
+ DEBIAN_FRONTEND=noninteractive apt-get install -y -q --no-install-recommends libreoffice
  
  #to clear some data before saving this layer ...a docker image
  apt-get clean
