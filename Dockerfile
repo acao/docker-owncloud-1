@@ -1,7 +1,7 @@
 #name of container: docker-owncloud
 #versison of container: 1.0.0
 
-FROM acao/docker-baseimage
+FROM acao/ops-owncloud
 MAINTAINER Richard Schulte "richard.j.schulte@gmail.com"
 
 # Set correct environment variables.
